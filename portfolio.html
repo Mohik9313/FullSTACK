@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Portfolio</title>
+    <link rel="stylesheet" href="portfolio.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+/>
+</head>
+<body>
+<div id="scroll-progress" class="scroll-progress"></div>
+<button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+    <i class="fas fa-sun"></i>
+</button>
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">MyPortfolio</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#hire" class="cta">Hire Me</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Hi, I'm <span class="highlight">Mohit Kumar</span></h1>
+                <p>I'm a Creative Web Developer & Designer building interactive, modern, and responsive websites.</p>
+                <a href="#projects" class="hero-btn">View My Work</a>
+            </div>
+        </section>
+    </header>
+<section id="about" class="about-section">
+    <div class="about-container">
+        <!-- About Image -->
+        <div class="about-image">
+            <img src="photo.jpg" alt="Your Name">
+        </div>
+        <!-- About Content -->
+        <div class="about-content">
+            <h2>About Me</h2>
+            <p>
+                Hi! I'm <span class="highlight">Mohit Kumar</span>, a passionate web developer and designer with expertise in creating modern, responsive, and visually stunning websites. I enjoy solving problems, learning new technologies, and building digital experiences that make a difference.
+            </p>
+            <ul class="skills-list">
+                <li>Web Development</li>
+                <li>UI/UX Design</li>
+                <li>JavaScript, HTML & CSS</li>
+                <li>React & Node.js</li>
+            </ul>
+            <a href="#contact" class="about-btn">Get in Touch</a>
+        </div>
+    </div>
+</section>
+<section id="projects" class="portfolio-section">
+    <div class="portfolio-container">
+        <h2 class="section-title">My Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <img src="image.png" alt="Project 1" class="project-img">
+                <div class="project-info">
+                    <h3>A berger hut website</h3>
+                    <p>A website built with HTML & CSS.</p>
+                    <div class="project-links">
+                        <a href="#" target="_blank" class="btn">Live Demo</a>
+                        <a href="#" target="_blank" class="btn">Source Code</a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="image copy.png" alt="Project 2" class="project-img">
+                <div class="project-info">
+                    <h3>A Website in Which Turn Your Leftover Food into a Lifeline for the Needy</h3>
+                    <p>A website built with HTML, CSS and JavaScript</p>
+                    <div class="project-links">
+                        <a href="#" target="_blank" class="btn">Live Demo</a>
+                        <a href="#" target="_blank" class="btn">Source Code</a>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="image copy 2.png" alt="Project 3" class="project-img">
+                <div class="project-info">
+                    <h3>A gaming website</h3>
+                    <p>A website built with HTML, CSS and JavaScript.</p>
+                    <div class="project-links">
+                        <a href="#" target="_blank" class="btn">Live Demo</a>
+                        <a href="#" target="_blank" class="btn">Source Code</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="services" class="services-section">
+    <div class="services-container">
+        <h2 class="section-title">My Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h3>Web Development</h3>
+                <p>I create responsive, modern, and high-performing websites that bring your ideas to life.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-paint-brush"></i>
+                </div>
+                <h3>UI/UX Design</h3>
+                <p>Crafting intuitive and visually appealing user interfaces for a seamless user experience.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3>Mobile Development</h3>
+                <p>Designing and developing mobile-friendly applications for Android and iOS platforms.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="testimonials" class="testimonials-section">
+    <div class="testimonials-container">
+        <h2 class="section-title">What My Clients Say</h2>
+        <div class="testimonial-slider">
+            <div class="testimonial-card active">
+                <p class="testimonial-text">
+                    "Working with Mohit Kumar was a great experience. The website turned out better than I imagined!"
+                </p>
+                <h3 class="testimonial-author">John Doe</h3>
+                <p class="testimonial-position">CEO, ABC Corp</p>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">
+                    "Mohit Kumar delivered an outstanding design. Professional, creative, and highly skilled!"
+                </p>
+                <h3 class="testimonial-author">Jane Smith</h3>
+                <p class="testimonial-position">Founder, XYZ Studio</p>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">
+                    "The quality of work exceeded my expectations. The project was delivered on time and perfectly!"
+                </p>
+                <h3 class="testimonial-author">Michael Lee</h3>
+                <p class="testimonial-position">Manager, Tech Solutions</p>
+            </div>
+        </div>
+        <div class="slider-controls">
+            <button id="prev-btn" class="slider-btn">&larr;</button>
+            <button id="next-btn" class="slider-btn">&rarr;</button>
+        </div>
+    </div>
+</section>
+<section id="contact" class="contact-section">
+    <div class="contact-container">
+        <h2 class="section-title">Get In Touch</h2>
+        <p class="contact-description">
+            I'm always open to new opportunities, collaborations, or just a friendly chat. Feel free to reach out!
+        </p>
+        <form id="contact-form" class="contact-form">
+            <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Your Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Your Message</label>
+                <textarea id="message" name="message" rows="5" placeholder="Enter your message" required></textarea>
+            </div>
+            <button type="submit" class="btn">Send Message</button>
+        </form>
+        <p id="form-message" class="form-message"></p>
+    </div>
+</section>
+<footer id="footer" class="footer-section">
+    <div class="footer-container">
+        <div class="footer-nav">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#services">Services</a>
+            <a href="#testimonials">Testimonials</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <div class="footer-social">
+            <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://twitter.com" target="_blank" aria-label="Twitter">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+        </div>
+        <div class="footer-copy">
+            <p>&copy; 2024 Your Name. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+<button id="back-to-top" class="back-to-top" aria-label="Back to Top">
+    <i class="fas fa-chevron-up"></i>
+</button>
+    <script src="portfolio.js"></script>
+</body>
+</html>
