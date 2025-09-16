@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My to do list</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 20px;
+            background: #f4f6f9;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            color: #444;
+        }
+
+        #taskInput {
+            padding: 10px;
+            width: 60%;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        #taskInput:focus {
+            border-color: #007bff;
+        }
+
+        #addBtn {
+            padding: 10px 15px;
+            margin-left: 10px;
+            background: #007bff;
+            border: none;
+            color: white;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #addBtn:hover {
+            background: #0056b3;
+        }
+
+        /* Task list */
+        #taskList {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        #taskList li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            padding: 12px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* Task text */
+        #taskList li span {
+            flex: 1;
+            font-size: 16px;
+        }
+
+        #taskList li span.done {
+            text-decoration: line-through;
+            color: gray;
+        }
+
+        /* Buttons */
+        .tickBtn, .delBtn {
+            border: none;
+            padding: 6px 10px;
+            margin-left: 8px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .tickBtn {
+            background: #28a745;
+            color: white;
+        }
+
+        .tickBtn:hover {
+            background: #1e7e34;
+        }
+
+        .delBtn {
+            background: #dc3545;
+            color: white;
+        }
+
+        .delBtn:hover {
+            background: #a71d2a;
+        }
+    </style>
+</head>
+<body>
+    <h1>My to do list</h1>
+    <input type="text" id="taskInput" placeholder="Enter tasks">
+    <button id="addBtn">Add task</button>
+
+    <ul id="taskList"></ul>
+    <script>
+        const taskInput = document.getElementById("taskInput");
+        const addBtn = document.getElementById("addBtn");
+        const taskList = document.getElementById("taskList");
+
+        addBtn.addEventListener("click", addTask);
+
+        function addTask() {
+            const taskText = taskInput.value.trim();
+
+            if (taskText === "") {
+                alert("Please enter a task!");
+                return;
+            }
+
+            // create li element
+            const li = document.createElement("li");
+
+            // task text
+            const span = document.createElement("span");
+            span.textContent = taskText;
+
+            // Tick button
+            const tickBtn = document.createElement("button");
+            tickBtn.textContent = "✔";
+            tickBtn.className = "tickBtn";
+            tickBtn.addEventListener("click", function () {
+                span.classList.toggle("done"); // toggle strike through
+            });
+
+            // Delete button
+            const delBtn = document.createElement("button");
+            delBtn.textContent = "✖";
+            delBtn.className = "delBtn";
+            delBtn.addEventListener("click", function () {
+                taskList.removeChild(li);
+            });
+
+            // put everything together
+            li.appendChild(span);
+            li.appendChild(tickBtn);
+            li.appendChild(delBtn);
+            taskList.appendChild(li);
+
+            // clear input
+            taskInput.value = "";
+        }
+    </script>
+</body>
+</html>
