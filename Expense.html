@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Expense Tracker</title>
+  <style>
+    :root{
+      --bg: #f5faf5;
+      --card: #ffffff;
+      --muted: #6b7280;
+      --accent: #8fc06e;
+      --accent-dark: #73a95a;
+      --shadow: 0 6px 20px rgba(20,20,20,0.06);
+      --radius: 10px;
+      font-family: Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    html,body{
+      height:100%;
+      margin:0;
+      background: linear-gradient(180deg, #f7fbf7 0%, #f1f7f1 100%);
+      color:#111827;
+    }
+
+    .wrap{
+      max-width: 900px;
+      margin: 36px auto;
+      padding: 36px;
+      background: var(--card);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    h1{
+      text-align:center;
+      font-size:38px;
+      margin: 6px 0 28px;
+      letter-spacing: 0.2px;
+    }
+
+    .layout{
+      display: flex;
+      flex-direction: column; /* 👈 yahan change kiya */
+      gap: 28px;
+    }
+
+    .form {
+      padding: 8px 6px 18px;
+    }
+
+    label {
+      display:block;
+      font-size:13px;
+      color:var(--muted);
+      margin-bottom:6px;
+      margin-top:14px;
+      font-weight:600;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="date"],
+    textarea {
+      width:100%;
+      box-sizing:border-box;
+      padding:10px 12px;
+      border:1px solid #e6eee6;
+      border-radius:8px;
+      background:#fbfffb;
+      font-size:15px;
+      outline:none;
+      transition: box-shadow .12s, border-color .12s;
+    }
+    input:focus, textarea:focus{
+      box-shadow: 0 6px 18px rgba(127,180,127,0.08);
+      border-color: #cfe6c7;
+    }
+
+    textarea {
+      min-height:92px;
+      resize: vertical;
+    }
+
+    .btn-add {
+      display:block;
+      width:100%;
+      margin-top:18px;
+      padding:14px 18px;
+      background: linear-gradient(#9bd36a,#7fbf55);
+      color:white;
+      border:none;
+      border-radius:10px;
+      font-weight:700;
+      font-size:16px;
+      cursor:pointer;
+      box-shadow: 0 6px 18px rgba(127,180,127,0.12);
+    }
+
+    .right {
+      padding-top: 4px;
+    }
+
+    .empty-hint{
+      color:var(--muted);
+      font-size:14px;
+      margin-bottom:8px;
+    }
+
+    table{
+      width:100%;
+      border-collapse:collapse;
+      font-size:14px;
+      margin-top:10px;
+      table-layout:fixed;
+    }
+    th, td{
+      text-align:left;
+      padding:12px 10px;
+      border-bottom:1px solid #f0f2f0;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+    }
+    thead th{
+      color:#374151;
+      font-weight:700;
+      font-size:14px;
+    }
+
+    .amount-col{ width:90px; }
+    .date-col{ width:120px; }
+    .action-col{ width:80px; text-align:center; }
+
+    .pill {
+      display:inline-block;
+      padding:6px 10px;
+      border-radius:999px;
+      background:#f3faf3;
+      color:#227a20;
+      font-weight:600;
+      font-size:13px;
+    }
+
+    .delete-btn{
+      border: none;
+      background: #ffefef;
+      color:#b22222;
+      padding:6px 10px;
+      border-radius:8px;
+      cursor:pointer;
+      font-weight:700;
+    }
+
+    .total-row {
+      padding-top:10px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-top:12px;
+      font-weight:700;
+      color:#111827;
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap" role="main" aria-labelledby="main-title">
+    <h1 id="main-title">Expense Tracker</h1>
+
+    <div class="layout">
+      <!-- Form column -->
+      <section class="form" aria-label="Expense form">
+        <label for="name">Expense Name</label>
+        <input id="name" type="text" placeholder="e.g. Groceries" autocomplete="off" />
+
+        <label for="amount">Amount (₹)</label>
+        <input id="amount" type="number" min="0" step="0.01" placeholder="e.g. 350" />
+
+        <label for="desc">Description</label>
+        <textarea id="desc" placeholder="e.g. Weekly fruits and vegetables"></textarea>
+
+        <label for="date">Date</label>
+        <input id="date" type="date" />
+
+        <button id="addBtn" class="btn-add">Add Expense</button>
+      </section>
+
+      <!-- Table / preview column -->
+      <section class="right" aria-label="Expenses list">
+        <div class="empty-hint">Recent Expenses</div>
+
+        <table id="expensesTable" aria-live="polite">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th class="amount-col">Amount</th>
+              <th>Description</th>
+              <th class="date-col">Date</th>
+              <th class="action-col">Action</th>
+            </tr>
+          </thead>
+          <tbody id="tbody">
+            <!-- dynamically added rows -->
+          </tbody>
+        </table>
+
+        <div class="total-row" aria-hidden="false">
+          <div>Total</div>
+          <div id="totalAmount" class="pill">₹0.00</div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    (function(){
+      const nameEl = document.getElementById('name');
+      const amountEl = document.getElementById('amount');
+      const descEl = document.getElementById('desc');
+      const dateEl = document.getElementById('date');
+      const addBtn = document.getElementById('addBtn');
+      const tbody = document.getElementById('tbody');
+      const totalAmountEl = document.getElementById('totalAmount');
+
+      let expenses = [];
+
+      function formatCurrency(n){
+        return '₹' + Number(n).toLocaleString('en-IN', {minimumFractionDigits:2, maximumFractionDigits:2});
+      }
+
+      function render(){
+        tbody.innerHTML = '';
+        let total = 0;
+        expenses.forEach((e, idx) => {
+          total += Number(e.amount);
+          const tr = document.createElement('tr');
+
+          const tdName = document.createElement('td');
+          tdName.textContent = e.name;
+          tr.appendChild(tdName);
+
+          const tdAmt = document.createElement('td');
+          tdAmt.textContent = formatCurrency(e.amount);
+          tr.appendChild(tdAmt);
+
+          const tdDesc = document.createElement('td');
+          tdDesc.textContent = e.desc;
+          tr.appendChild(tdDesc);
+
+          const tdDate = document.createElement('td');
+          tdDate.textContent = e.date || '-';
+          tr.appendChild(tdDate);
+
+          const tdAct = document.createElement('td');
+          tdAct.style.textAlign = 'center';
+          const delBtn = document.createElement('button');
+          delBtn.className = 'delete-btn';
+          delBtn.textContent = 'Delete';
+          delBtn.title = 'Delete expense';
+          delBtn.addEventListener('click', () => {
+            expenses.splice(idx,1);
+            render();
+          });
+          tdAct.appendChild(delBtn);
+          tr.appendChild(tdAct);
+
+          tbody.appendChild(tr);
+        });
+        totalAmountEl.textContent = formatCurrency(total);
+      }
+
+      function clearForm(){
+        nameEl.value = '';
+        amountEl.value = '';
+        descEl.value = '';
+        dateEl.value = '';
+      }
+
+      addBtn.addEventListener('click', () => {
+        const name = nameEl.value.trim();
+        const amount = amountEl.value.trim();
+        const desc = descEl.value.trim();
+        const date = dateEl.value;
+
+        if(!name){
+          alert('Please enter an expense name.');
+          nameEl.focus();
+          return;
+        }
+        if(!amount || isNaN(amount) || Number(amount) <= 0){
+          alert('Please enter a valid amount (greater than 0).');
+          amountEl.focus();
+          return;
+        }
+
+        expenses.unshift({
+          name,
+          amount: parseFloat(amount),
+          desc,
+          date
+        });
+
+        render();
+        clearForm();
+      });
+
+      expenses.push({name:'Sample: Stationery', amount:120.50, desc:'Notebooks & pens', date: new Date().toISOString().slice(0,10)});
+      render();
+    })();
+  </script>
+</body>
+</html>
