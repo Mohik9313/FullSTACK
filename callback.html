@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callback vs promise example</title>
+</head>
+<body>
+    <h1>check the console for callback and promise examples</h1>
+    <button id="startbutton">Run examples</button>
+    <script> 
+        function doTaskCallback(taskName,callback){
+  console.log("Starting CallBack:",taskName);
+  setTimeout(()=>{
+    console.log("Completed Task:",taskName);
+    callback();
+  },2000);
+}
+
+function doTaskPromise(taskName){
+  return new Promise((resolve,reject)=>{
+    console.log("Starting task:",taskName);
+    setTimeout(()=>{
+      console.log("Completed Promise task",taskName);
+      resolve();
+    },3000);
+  });
+}
+    </script>
+</body>
+</html>

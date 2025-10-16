@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Marks System</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f7f7f7;
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px;
+    }
+
+    /* Left Section */
+    .left {
+      width: 65%;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+
+    .left h2 {
+      margin-top: 0;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .student-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    .student-table th,
+    .student-table td {
+      text-align: left;
+      padding: 8px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .note {
+      margin-top: 20px;
+      color: #555;
+    }
+
+    /* Right Section */
+    .right {
+      width: 30%;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+
+    .controls button {
+      display: block;
+      margin: 8px 0;
+      padding: 10px;
+      width: 100%;
+      border: none;
+      border-radius: 5px;
+      background: #4a90e2;
+      color: white;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .controls button:hover {
+      background: #357ab7;
+    }
+
+    .add-student {
+      margin-top: 20px;
+    }
+
+    .add-student input {
+      width: calc(100% - 10px);
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .add-student button {
+      background: #5cb85c;
+    }
+
+    .tip {
+      font-size: 12px;
+      color: #777;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Left section -->
+    <div class="left">
+      <h2>Student Marks System</h2>
+      <p>A simple interactive demo to practice JavaScript arrays: add/remove/sort/calc avg/find max.</p>
+      <p><strong>Total students:</strong> 0</p>
+
+      <table class="student-table">
+        <tr>
+          <th>Name</th>
+          <th>Marks</th>
+        </tr>
+        <!-- Rows will be added dynamically -->
+      </table>
+
+      <p class="note">Use the controls on the right to interact with the student list.</p>
+    </div>
+
+    <!-- Right section -->
+    <div class="right">
+      <div class="controls">
+        <button>Show Highest</button>
+        <button>Show Average</button>
+        <button>Sort by Marks</button>
+        <button>Reset Sample</button>
+        <button>Remove Last</button>
+      </div>
+
+      <div class="add-student">
+        <h4>Add a student</h4>
+        <input type="text" placeholder="Student name">
+        <input type="number" placeholder="Marks (0-100)">
+        <button>Add Student</button>
+        <p class="tip">Tip: Press Enter in the Marks field to add quickly</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

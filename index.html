@@ -1,16 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>First javascript</title>
-    <script src="./first.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Marks System</title>
+  <link rel="stylesheet" href="layout.css">
 </head>
 <body>
-    <h1>JAVA SCRIPT</h1>
-<p id="message">this text will change</p>
-<script>
-    document
-</script>
+  <div class="container">
+    <!-- Left Section -->
+    <div class="left">
+      <div class="header">
+        <h2>Student Marks System</h2>
+        <p><strong>Total students:</strong> <span id="total">0</span></p>
+      </div>
+      <p class="description">
+        A simple interactive demo to practice JavaScript arrays: add/remove/sort/calc avg/find max.
+      </p>
+
+      <table class="student-table">
+        <tr>
+          <th>Name</th>
+          <th>Marks</th>
+        </tr>
+        <!-- Student rows will appear here -->
+      </table>
+
+      <p class="note">Use the controls on the right to interact with the student list.</p>
+    </div>
+
+    <!-- Right Section -->
+    <div class="right">
+      <div class="controls">
+        <button id="btnHighest">Show Highest</button>
+        <button id="btnAverage">Show Average</button>
+        <button id="btnSort">Sort by Marks</button>
+        <button id="btnReset">Reset Sample</button>
+        <button id="btnRemove">Remove Last</button>
+      </div>
+
+      <div class="add-student">
+        <h4>Add a student</h4>
+        <input type="text" id="studentName" placeholder="Student name">
+        <input type="number" id="studentMarks" placeholder="Marks (0-100)">
+        <button id="btnAdd">Add Student</button>
+        <p class="tip">Tip: Press Enter in the Marks field to add quickly</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="layout.js"></script>
 </body>
 </html>
